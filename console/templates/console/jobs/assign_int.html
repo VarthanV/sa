@@ -1,37 +1,51 @@
-{% extends "base.html" %}
-{% block content %}
-{% load widget_tweaks %}
+{% extends "base.html" %} {% block content %}
+{% load staticfiles %}
+<script src="{% static 'js/scripts.js'%}"></script>
 
-<div class="row">
-    <div class="col-lg-6 mb-4" style="margin: auto">
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary text-center">JOB ASSIGN - INTERNAL MARKS</h6>
-            </div>
-            <div class="card-body">
-                <form action="{% url 'assign_int' %}" method="GET">
-                    <label for="">Department</label>
-                    <input type="text" class="form-control" name="department">
-                    <br>
-                    <label for="">Subject</label>
-                    <input type="text" class="form-control" name="subject">
-                    <br>
-                    <button type="submit" class="btn btn-primary">Filter</button>
-                </form>
-                <hr>
-                <form action="{% url 'assign_int' %}" method="POST">
-                    {% csrf_token %}
-                    <label for="">Staff Name</label>
-                    {% render_field form.staff|add_class:"form-control" %}
-                    <br>
-                    <label for="">Subject</label>
-                    {% render_field form.subject|add_class:"form-control" %}
-                    <br>
-                    <button type="submit" class="btn btn-primary">Assign Job</button>
-                </form>
-            </div>
-        </div>
+<div class="container">
+  <form>
+    <div class="form-group">
+
+        <label> Semester</label>
+
+        <label for="exampleFormControlSelect1">Semester</label>
+        <select class="form-control" id="semesterFormControl">
+        <option>  Select Semester</option>
+        <option>1</option>  
+        <option>2</option>  
+        <option>3</option>  
+        <option>4</option>  
+        <option>5</option>  
+        <option>6</option>  
+        <option>7</option>  
+        <option>8</option>  
+        </select>
+      <label> Department</label>
+
+      <label for="exampleFormControlSelect1">Select Department</label>
+      <select class="form-control" id="departmentFormControl">
+      <option>  Select Department</option>  
+      </select>
     </div>
+    <label>
+      
+      Teachers 
+    </label>
+
+    <label for="exampleFormControlSelect1">Select Teachers</label>
+    <select class="form-control"  id="selectTeachers">
+    <option>Select Teachers</option>  
+    </select>
+   
+    <label for="exampleFormControlSelect1">Select Subjects</label>
+    <select class="form-control"  id="selectSubject">
+    <option>Select Subjects</option>  
+    </select>
+<button class="btn btn-primary">  Submit </button>
+  </div>
+
+  </form>
+</div>
 </div>
 
 {% endblock content %}
